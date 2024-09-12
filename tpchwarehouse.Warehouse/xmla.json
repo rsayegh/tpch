@@ -219,7 +219,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -419,21 +419,6 @@
             ]
           },
           {
-            "name": "LoadId",
-            "dataType": "int64",
-            "sourceColumn": "LoadId",
-            "formatString": "0",
-            "sourceProviderType": "int",
-            "sourceLineageTag": "LoadId",
-            "summarizeBy": "sum",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
             "name": "CreateDatetime",
             "dataType": "dateTime",
             "sourceColumn": "CreateDatetime",
@@ -462,6 +447,21 @@
                 "value": "Automatic"
               }
             ]
+          },
+          {
+            "name": "LoadId",
+            "dataType": "int64",
+            "sourceColumn": "LoadId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "LoadId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -479,7 +479,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -525,6 +525,49 @@
             "sourceProviderType": "int",
             "sourceLineageTag": "SupplierCode",
             "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SuppliedPartQuantity",
+            "dataType": "int64",
+            "sourceColumn": "SuppliedPartQuantity",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SuppliedPartQuantity",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SuppliedPartCost",
+            "dataType": "decimal",
+            "sourceColumn": "SuppliedPartCost",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "SuppliedPartCost",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SuppliedPartComment",
+            "dataType": "string",
+            "sourceColumn": "SuppliedPartComment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SuppliedPartComment",
+            "summarizeBy": "none",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -689,49 +732,6 @@
                 "value": "Automatic"
               }
             ]
-          },
-          {
-            "name": "SuppliedPartQuantity",
-            "dataType": "int64",
-            "sourceColumn": "SuppliedPartQuantity",
-            "formatString": "0",
-            "sourceProviderType": "int",
-            "sourceLineageTag": "SuppliedPartQuantity",
-            "summarizeBy": "sum",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "SuppliedPartCost",
-            "dataType": "decimal",
-            "sourceColumn": "SuppliedPartCost",
-            "sourceProviderType": "decimal",
-            "sourceLineageTag": "SuppliedPartCost",
-            "summarizeBy": "sum",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "SuppliedPartComment",
-            "dataType": "string",
-            "sourceColumn": "SuppliedPartComment",
-            "sourceProviderType": "varchar",
-            "sourceLineageTag": "SuppliedPartComment",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
           }
         ],
         "partitions": [
@@ -749,7 +749,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -946,7 +946,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -1255,7 +1255,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -1324,6 +1324,36 @@
             ]
           },
           {
+            "name": "ShipDateKey",
+            "dataType": "int64",
+            "sourceColumn": "ShipDateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "ShipDateKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SuppliedPartKey",
+            "dataType": "int64",
+            "sourceColumn": "SuppliedPartKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SuppliedPartKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
             "name": "SupplierKey",
             "dataType": "int64",
             "sourceColumn": "SupplierKey",
@@ -1339,12 +1369,12 @@
             ]
           },
           {
-            "name": "ShipDateKey",
+            "name": "OrderCode",
             "dataType": "int64",
-            "sourceColumn": "ShipDateKey",
+            "sourceColumn": "OrderCode",
             "formatString": "0",
             "sourceProviderType": "int",
-            "sourceLineageTag": "ShipDateKey",
+            "sourceLineageTag": "OrderCode",
             "summarizeBy": "sum",
             "annotations": [
               {
@@ -1551,6 +1581,20 @@
             ]
           },
           {
+            "name": "OrderShipPriority",
+            "dataType": "string",
+            "sourceColumn": "OrderShipPriority",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "OrderShipPriority",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
             "name": "OrderComment",
             "dataType": "string",
             "sourceColumn": "OrderComment",
@@ -1578,50 +1622,6 @@
                 "value": "Automatic"
               }
             ]
-          },
-          {
-            "name": "OrderShipPriority",
-            "dataType": "string",
-            "sourceColumn": "OrderShipPriority",
-            "sourceProviderType": "varchar",
-            "sourceLineageTag": "OrderShipPriority",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "SuppliedPartKey",
-            "dataType": "int64",
-            "sourceColumn": "SuppliedPartKey",
-            "formatString": "0",
-            "sourceProviderType": "int",
-            "sourceLineageTag": "SuppliedPartKey",
-            "summarizeBy": "sum",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "OrderCode",
-            "dataType": "int64",
-            "sourceColumn": "OrderCode",
-            "formatString": "0",
-            "sourceProviderType": "int",
-            "sourceLineageTag": "OrderCode",
-            "summarizeBy": "sum",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
           }
         ],
         "partitions": [
@@ -1639,7 +1639,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -1705,7 +1705,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -1916,7 +1916,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -2176,7 +2176,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -2436,7 +2436,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -2706,7 +2706,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -2903,7 +2903,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -3212,7 +3212,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       },
@@ -3596,7 +3596,7 @@
         "annotations": [
           {
             "name": "IsTableInBiModel",
-            "value": "True"
+            "value": "False"
           }
         ]
       }
@@ -3615,7 +3615,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"exec_requests_history\",\"long_running_queries\",\"vwDimDate2\",\"frequently_run_queries\",\"exec_sessions_history\",\"vwDimSuppliedPart\",\"vwDimCustomer\",\"vwFactAccounts\",\"vwFactOrderLines\",\"vwDimSupplier\",\"vwDimDate\",\"FactAccounts\",\"DimSuppliedPart\",\"DimDate\",\"UserAccess\",\"FactOrderLines\",\"DimCustomer\",\"DimSupplier\"]"
+        "value": "[\"vwDimDate\",\"vwDimSuppliedPart\",\"vwDimCustomer\",\"vwFactOrderLines\",\"vwDimDate2\",\"vwDimSupplier\",\"vwFactAccounts\",\"DimSuppliedPart\",\"UserAccess\",\"DimCustomer\",\"DimDate\",\"DimSupplier\",\"FactAccounts\",\"FactOrderLines\"]"
       },
       {
         "name": "SourceLineageTagType",
