@@ -1,0 +1,3524 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.130.932.0 (24.06)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"FactOrderLines\",\"DimSupplier\",\"DimSuppliedPart\",\"DimDate\",\"DimCustomer\",\"Facts\",\"Metrics\",\"FactAccounts\",\"DimDate2\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DaxQueryView_Desktop\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "expressions": [
+      {
+        "name": "Facts",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+          "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+          "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+          "in",
+          "    #\"Removed Columns\""
+        ],
+        "kind": "m",
+        "lineageTag": "cfb8d728-2340-4648-9ada-3d0e8c6507ee"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "3f4ae3d4-af90-4cbd-aaa8-2eede1395264",
+        "fromColumn": "CustomerKey",
+        "fromTable": "FactOrderLines",
+        "toColumn": "CustomerKey",
+        "toTable": "DimCustomer"
+      },
+      {
+        "name": "dedfd5ab-622f-42dd-bf23-009a3c157ff0",
+        "fromColumn": "CommitDateKey",
+        "fromTable": "FactOrderLines",
+        "isActive": false,
+        "toColumn": "DateKey",
+        "toTable": "DimDate"
+      },
+      {
+        "name": "6f06bfba-bb3b-4837-828e-569a95b1cc41",
+        "fromColumn": "OrderDateKey",
+        "fromTable": "FactOrderLines",
+        "toColumn": "DateKey",
+        "toTable": "DimDate"
+      },
+      {
+        "name": "d9b0c9f0-e2ca-45e6-a7ec-1374604b74d2",
+        "fromColumn": "ShipDateKey",
+        "fromTable": "FactOrderLines",
+        "isActive": false,
+        "toColumn": "DateKey",
+        "toTable": "DimDate"
+      },
+      {
+        "name": "0bf87301-7e67-4917-b877-cb88d8244833",
+        "fromColumn": "SupplierKey",
+        "fromTable": "FactOrderLines",
+        "toColumn": "SupplierKey",
+        "toTable": "DimSupplier"
+      },
+      {
+        "name": "628f8a7c-182c-4ba9-ac4d-874d80ef4e11",
+        "fromColumn": "SuppliedPartKey",
+        "fromTable": "FactOrderLines",
+        "toColumn": "SuppliedPartKey",
+        "toTable": "DimSuppliedPart"
+      },
+      {
+        "name": "41881e98-c2d0-43a4-ba61-72c410ab96cb",
+        "fromColumn": "ReceiptDateKey",
+        "fromTable": "FactOrderLines",
+        "isActive": false,
+        "toColumn": "DateKey",
+        "toTable": "DimDate"
+      },
+      {
+        "name": "ab7a38d0-2513-4c25-b116-636accb0d2c5",
+        "fromColumn": "DateKey",
+        "fromTable": "FactAccounts",
+        "toColumn": "DateKey",
+        "toTable": "DimDate"
+      },
+      {
+        "name": "c171c6d7-861e-41eb-bb86-a3bb0ee98717",
+        "fromColumn": "DateKey",
+        "fromTable": "FactAccounts",
+        "isActive": false,
+        "toColumn": "DateKey",
+        "toTable": "DimDate2"
+      }
+    ],
+    "sourceQueryCulture": "en-CH",
+    "tables": [
+      {
+        "name": "FactOrderLines",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CommitDateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "4560b4ba-74a2-4c98-9823-50e0af78df66",
+            "sourceColumn": "CommitDateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "CustomerKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "isNullable": false,
+            "lineageTag": "487d32f7-99b6-4c65-a833-922cea95a8be",
+            "sourceColumn": "CustomerKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderDateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "d0063a30-17c1-49fc-9f63-67c5e97b3b32",
+            "sourceColumn": "OrderDateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReceiptDateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "a3723939-17a4-433a-8c2c-8172ffc8d870",
+            "sourceColumn": "ReceiptDateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "ShipDateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "9e5ab787-add7-41ac-b9b5-76c4f9f58d2a",
+            "sourceColumn": "ShipDateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "SuppliedPartKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "isNullable": false,
+            "lineageTag": "e1c0df8a-4654-461c-b75c-dce6a598f73b",
+            "sourceColumn": "SuppliedPartKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "isNullable": false,
+            "lineageTag": "9432e23f-8213-47dd-8910-6cd9d5c263ec",
+            "sourceColumn": "SupplierKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "402f2c0a-0d86-43ca-87d2-f87aab11cd4c",
+            "sourceColumn": "OrderCode",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "LineNumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0feb0b88-15af-4c2e-96df-f7a028569fe2",
+            "sourceColumn": "LineNumber",
+            "sourceProviderType": "int",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "421455ca-c675-4679-ab8d-8cea5f94b015",
+            "sourceColumn": "Quantity",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ExtendedPrice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "e41a5774-be7c-4e4b-86c3-8b30e52ea2ea",
+            "sourceColumn": "ExtendedPrice",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Discount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "e60833ba-de9c-40c3-b113-3ba139402ca4",
+            "sourceColumn": "Discount",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Tax",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "f643534f-8529-4842-839c-7e942908934b",
+            "sourceColumn": "Tax",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ReturnFlag",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e1597675-b5fa-4185-9392-20f58a94e6f9",
+            "sourceColumn": "ReturnFlag",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LineStatus",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "57daaf51-88a5-4f37-9124-135beb8e3f66",
+            "sourceColumn": "LineStatus",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ShipInstruct",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7244f0c4-1a00-47ab-8390-2ee0ab3fe27e",
+            "sourceColumn": "ShipInstruct",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ShipMode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8e1f415a-0dfc-4eb8-9fdf-0c0591827213",
+            "sourceColumn": "ShipMode",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LineItemComment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a731a749-b5d8-4493-8c82-cf3baa206d5e",
+            "sourceColumn": "LineItemComment",
+            "sourceProviderType": "varchar(200)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderStatus",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f6787503-ab29-4d70-aa1b-40a9d83ed6e1",
+            "sourceColumn": "OrderStatus",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderTotalPrice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "f2eb75ee-2591-40bd-9aea-8223606e1d7a",
+            "sourceColumn": "OrderTotalPrice",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OrderPriority",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2a4c34d9-ce82-4323-84bc-d33bd77e36fa",
+            "sourceColumn": "OrderPriority",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderClerk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3b1dd41c-13e2-4851-be1e-26967892c713",
+            "sourceColumn": "OrderClerk",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderShipPriority",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d12bf555-49a8-4df9-ba21-edb03e6537d6",
+            "sourceColumn": "OrderShipPriority",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderComment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "35536c08-5ca9-4bf5-bff5-7b2e36959978",
+            "sourceColumn": "OrderComment",
+            "sourceProviderType": "varchar(200)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LoadId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "a4061569-1a3a-421f-bb0f-18604b5231af",
+            "sourceColumn": "LoadId",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          }
+        ],
+        "lineageTag": "35cc5b91-82e7-40fa-98da-3dbd42a76234",
+        "partitions": [
+          {
+            "name": "FactOrderLines",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_FactOrderLines = Source{[Schema=\"dbo\",Item=\"vwFactOrderLines\"]}[Data]",
+                "in",
+                "    dbo_FactOrderLines"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimSupplier",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "SupplierKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "68b6e443-9c83-45b3-a858-e7470f24d660",
+            "sourceColumn": "SupplierKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "6706a29e-2b67-45bd-9c57-e6161c819e4a",
+            "sourceColumn": "SupplierCode",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "3bb43c5d-53bb-4ac9-b7ab-f67a3d31fb20",
+            "sourceColumn": "SupplierName",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierAddress",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "eb9588d2-4181-433d-97dd-9a45b6579507",
+            "sourceColumn": "SupplierAddress",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierPhone",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "e6a86aa5-be66-409d-8de8-359dcf6e809d",
+            "sourceColumn": "SupplierPhone",
+            "sourceProviderType": "varchar(20)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierBalance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isNullable": false,
+            "lineageTag": "08ba8ec5-1ced-4584-9244-c18369c1c826",
+            "sourceColumn": "SupplierBalance",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierComment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fef52f00-96ee-4f4a-9f76-6970f77a2373",
+            "sourceColumn": "SupplierComment",
+            "sourceProviderType": "varchar(200)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierNation",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "9b2b85db-8ec8-4662-9be8-724f1a852e3d",
+            "sourceColumn": "SupplierNation",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierRegion",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "82a48667-83d6-4bc4-b97e-2ebd76f048a8",
+            "sourceColumn": "SupplierRegion",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CreateDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "1e60d659-268d-424a-b6b0-5c2a1bc65a4c",
+            "sourceColumn": "CreateDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "82569b89-0336-416c-bdfa-055b38b53c87",
+            "sourceColumn": "ChangeDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LoadId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "b11e43b4-2f42-4157-9510-3f4b34f42c5d",
+            "sourceColumn": "LoadId",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c6f76a8b-5e60-4239-9cf2-255db8070def",
+        "partitions": [
+          {
+            "name": "DimSupplier",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_DimSupplier = Source{[Schema=\"dbo\",Item=\"vwDimSupplier\"]}[Data]",
+                "in",
+                "    dbo_DimSupplier"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimSuppliedPart",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "SuppliedPartKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "418f4f2b-f2aa-4610-a133-43140d366f9e",
+            "sourceColumn": "SuppliedPartKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "6341df0c-5d9b-431e-b124-c45131b37fae",
+            "sourceColumn": "PartCode",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupplierCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "0cf2c8b6-6c66-40b7-8008-e4be61e95abf",
+            "sourceColumn": "SupplierCode",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SuppliedPartQuantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "b692b88d-b03e-46dd-978b-c8b2bea62562",
+            "sourceColumn": "SuppliedPartQuantity",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SuppliedPartCost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "06fe1517-64e9-41c3-bc4e-b5c31eb3b247",
+            "sourceColumn": "SuppliedPartCost",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SuppliedPartComment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e808258c-cb3d-4484-bd49-23a990e0e992",
+            "sourceColumn": "SuppliedPartComment",
+            "sourceProviderType": "varchar(200)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cb6708d3-947f-4200-b0ff-a0deda2ad49d",
+            "sourceColumn": "PartName",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartManufacturer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1d037051-e099-4d62-896c-65a70912c285",
+            "sourceColumn": "PartManufacturer",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartBrand",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "59c755e6-827b-4a9b-b343-6f94c356310f",
+            "sourceColumn": "PartBrand",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6927824f-ab67-4308-bf65-67b2d21152a1",
+            "sourceColumn": "PartType",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartSize",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "a4d6551e-93f9-4c5f-b857-16cbeac306db",
+            "sourceColumn": "PartSize",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartContainer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "67783d25-3818-43f7-a376-b665b8aadd7b",
+            "sourceColumn": "PartContainer",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartRetailPrice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "0c9f64bf-e998-481f-ada5-cd456faf6935",
+            "sourceColumn": "PartRetailPrice",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PartComment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a0bfc362-1f85-446e-80a4-c7200f7bbbd4",
+            "sourceColumn": "PartComment",
+            "sourceProviderType": "varchar(200)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CreateDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "9492de11-a324-4de4-b027-dad054979e24",
+            "sourceColumn": "CreateDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "bbca4b6b-9522-42bc-b73e-0d9256a30bd5",
+            "sourceColumn": "ChangeDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LoadId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "9cfc5e04-5f72-49be-8ed7-c249333a3123",
+            "sourceColumn": "LoadId",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "4386caf1-96da-43f5-85cf-5dee0bb858fb",
+        "partitions": [
+          {
+            "name": "DimSuppliedPart",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_DimSuppliedPart = Source{[Schema=\"dbo\",Item=\"vwDimSuppliedPart\"]}[Data]",
+                "in",
+                "    dbo_DimSuppliedPart"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "DateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "423d5f23-6009-4653-8e31-0876877646d2",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "isKey": true,
+            "isNullable": false,
+            "lineageTag": "d59482dc-dd97-4885-ba73-d90e5d728b97",
+            "sourceColumn": "Date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "4f58f554-c0aa-41c6-97fa-70b0f19554f8",
+            "sourceColumn": "DayName",
+            "sourceProviderType": "varchar(10)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "da1efd14-f03b-429f-b4dc-5ffac0aa7d65",
+            "sourceColumn": "DayOfMonth",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DayOfYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "31061737-cced-4f27-9072-b88e79d63816",
+            "sourceColumn": "DayOfYear",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "c1c1cd56-5adf-43c4-b3ee-674d37e88668",
+            "sourceColumn": "Month",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MonthName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "56204131-d3e0-43ec-88c6-7bf6f31cda0f",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "varchar(10)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthOfQuarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "1da70950-d23d-4536-a2f7-306916678765",
+            "sourceColumn": "MonthOfQuarter",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "27e35250-d251-4e26-96c9-b19bac572987",
+            "sourceColumn": "MonthYear",
+            "sourceProviderType": "int",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "612cff5a-a1b9-4f9a-9033-b468add941b0",
+            "sourceColumn": "Quarter",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "QuarterName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "9acb8026-45ce-4c59-89dc-0a10be59fec8",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "varchar(2)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "954419cd-6187-4e51-9706-c3a5fe8aac33",
+            "sourceColumn": "Year",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "YearName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "dcb2be5c-8541-4c89-a4ad-5c78cac877b3",
+            "sourceColumn": "YearName",
+            "sourceProviderType": "varchar(10)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CreateDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "850f0994-e4a9-45da-9d44-78ce3ebe951d",
+            "sourceColumn": "CreateDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "a65f30d9-6a3e-4dc9-9922-99caa4f94303",
+            "sourceColumn": "ChangeDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LoadId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "afd7f3e2-f86a-4a74-9692-a77e25d50910",
+            "sourceColumn": "LoadId",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          }
+        ],
+        "dataCategory": "Time",
+        "lineageTag": "4fea4756-af15-4cd9-8e26-e5523953f03c",
+        "partitions": [
+          {
+            "name": "DimDate",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_DimDate = Source{[Schema=\"dbo\",Item=\"vwDimDate\"]}[Data]",
+                "in",
+                "    dbo_DimDate"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "17ea1fc8-dc7a-4af4-afd9-3b63124285a0",
+            "sourceColumn": "CustomerKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "7ff765cd-3d7f-4799-9298-f0975c6a9735",
+            "sourceColumn": "CustomerCode",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "f0fc9b16-600a-44c4-a8d5-5c2f90fb1b5f",
+            "sourceColumn": "CustomerName",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerAddress",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "142efad0-b75b-4b3e-b18e-85a128421c87",
+            "sourceColumn": "CustomerAddress",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerPhone",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "1e6ab6bf-34c1-4ae6-813b-1a01484683c0",
+            "sourceColumn": "CustomerPhone",
+            "sourceProviderType": "varchar(20)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerBalance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isNullable": false,
+            "lineageTag": "e3a0c43b-645c-41cd-b1c1-4ccda4bae966",
+            "sourceColumn": "CustomerBalance",
+            "sourceProviderType": "decimal(15, 2)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "2837c065-20a8-45cd-bae0-e6ef40a83ca6",
+            "sourceColumn": "CustomerSegment",
+            "sourceProviderType": "varchar(50)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerComment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "373a44d1-fef5-4de4-a295-efe1356b0dee",
+            "sourceColumn": "CustomerComment",
+            "sourceProviderType": "varchar(200)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerNation",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "afd607e4-6945-405d-aa61-1c4020692943",
+            "sourceColumn": "CustomerNation",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerRegion",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "7662484a-095a-4f1e-9732-6631c0444e8a",
+            "sourceColumn": "CustomerRegion",
+            "sourceProviderType": "varchar(100)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CreateDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "e10b90c6-94ef-4e97-ae5b-1ec8948348f9",
+            "sourceColumn": "CreateDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "f69c65cb-4885-4121-9289-47fab7ec8d89",
+            "sourceColumn": "ChangeDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LoadId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "f6854c93-02cf-4d8f-b696-5fe08b613d3b",
+            "sourceColumn": "LoadId",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "9070cb56-8357-4426-9e6f-bc8ddfec8636",
+        "partitions": [
+          {
+            "name": "DimCustomer",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_DimCustomer = Source{[Schema=\"dbo\",Item=\"vwDimCustomer\"]}[Data]",
+                "in",
+                "    dbo_DimCustomer"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Metrics",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "lineageTag": "3084d6c4-8ce9-4f6f-b5ea-8d6292edee26",
+        "measures": [
+          {
+            "name": "HiddenMeasure",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "expression": "1",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "4a05d65a-177a-49c4-9bb2-2cc26b163d80"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Orders",
+            "expression": "CALCULATE(SUM(FactOrderLines[Quantity]))",
+            "lineageTag": "76b43039-f57e-4122-9464-f313f456f980"
+          },
+          {
+            "name": "Discount",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Orders",
+            "expression": "CALCULATE(SUM(FactOrderLines[Discount]))",
+            "lineageTag": "4ad0a016-f89c-4a80-8f51-8081f720a45f"
+          },
+          {
+            "name": "Tax",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Orders",
+            "expression": "CALCULATE(SUM(FactOrderLines[Tax]))",
+            "lineageTag": "ffc1960a-ab57-4d42-ac3a-50c7d3551801"
+          },
+          {
+            "name": "P&L Value",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L\\ZebraBI",
+            "expression": "1",
+            "lineageTag": "3c2a7b69-405b-4e86-ada3-74ce11b346df"
+          },
+          {
+            "name": "Product Revenue",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[ProductRevenue]))",
+            "lineageTag": "3aa7cb55-80cc-4822-a71d-1f92cc694ada"
+          },
+          {
+            "name": "Service and other revenue",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[ServiceAndOtherRevenue]))",
+            "lineageTag": "3001fb56-46b4-4f87-8a43-b20bb0c0ac0f"
+          },
+          {
+            "name": "Revenue",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[Revenue]))",
+            "lineageTag": "9184910f-fdda-4033-bb32-bee1d7a6f20a"
+          },
+          {
+            "name": "Product cost",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[ProductCost]))",
+            "lineageTag": "7ba8be08-9dd5-499a-a38c-0cfda121a6fc"
+          },
+          {
+            "name": "Service and other costs",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[ServiceAndOtherCosts]))",
+            "lineageTag": "299f9a94-1101-4846-b694-cb6e77d7aecd"
+          },
+          {
+            "name": "Gross margin",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[GrossMargin]))",
+            "lineageTag": "8ad0c5fa-7fb0-4dd8-817f-49efcc8b2d63"
+          },
+          {
+            "name": "Research and development",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[ResearchAndDevelopment]))",
+            "lineageTag": "c191d5f6-9e83-4ba8-a07a-769fea4374bd"
+          },
+          {
+            "name": "Sales and marketing",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[SalesAndMarketing]))",
+            "lineageTag": "7b2dd4a8-bd88-4575-99c2-f81b7e0cd45d"
+          },
+          {
+            "name": "General and administrative",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[GeneralAndAdministrative]))",
+            "lineageTag": "c251109e-2227-489e-8a55-03f7a105f945"
+          },
+          {
+            "name": "Restructuring",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[Restructuring]))",
+            "lineageTag": "08331dd9-9e8f-475d-a489-66feb726b380"
+          },
+          {
+            "name": "Operating income",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[OperatingIncome]))",
+            "lineageTag": "fbc36c48-63ca-47f9-b0a4-0262759e2e9d"
+          },
+          {
+            "name": "Other Income, net",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[OtherIncomeNet]))",
+            "lineageTag": "5e1875fd-50de-4eea-b3a7-256bb901c840"
+          },
+          {
+            "name": "Income before income taxes",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[IncomeBeforeIncomeTaxes]))",
+            "lineageTag": "57090723-ba02-4e64-99aa-eed2b94bc053"
+          },
+          {
+            "name": "Provision for income taxes",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[ProvisionForIncomeTaxes]))",
+            "lineageTag": "c92cbb70-d327-4621-8a06-026c21d3e98c"
+          },
+          {
+            "name": "Net income",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "P&L",
+            "expression": "CALCULATE(SUM(FactAccounts[NetIncome]))",
+            "lineageTag": "2ba24b7a-8833-4820-9f4a-4c5b38004002"
+          },
+          {
+            "name": "P&L Value - AC",
+            "displayFolder": "P&L\\ZebraBI",
+            "expression": [
+              "1",
+              ""
+            ],
+            "lineageTag": "34da9543-e615-4222-a504-cbe9c6083112"
+          },
+          {
+            "name": "P&L Value - PY",
+            "displayFolder": "P&L\\ZebraBI",
+            "expression": "1",
+            "lineageTag": "d380de8d-ef7e-4e40-b5ef-bffd574e56ac"
+          },
+          {
+            "name": "P&L Value - Revenue",
+            "expression": [
+              "CALCULATE(",
+              "    SELECTEDMEASURE(),",
+              "    'InternalP&LSelection'[Account] = \"Revenue\"",
+              ")"
+            ],
+            "lineageTag": "fbc9afda-afce-4e13-9e10-159c49262275"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Metrics",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "P&L",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Product Revenue",
+              "expression": [
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Product Revenue],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Product Revenue],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Product Revenue]",
+                "    )",
+                ")",
+                "",
+                ""
+              ],
+              "ordinal": 0
+            },
+            {
+              "name": "Service and other revenue",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Service and other revenue],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Service and other revenue],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Service and other revenue]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 1
+            },
+            {
+              "name": "Revenue",
+              "expression": [
+                "",
+                "    ",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Product Revenue] + [Service and other revenue],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Product Revenue] + [Service and other revenue],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Product Revenue] + [Service and other revenue]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 2
+            },
+            {
+              "name": "Product cost",
+              "expression": [
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Product cost],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Product cost],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Product cost]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 3
+            },
+            {
+              "name": "Service and other costs",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Service and other costs],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Service and other costs],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Service and other costs]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 4
+            },
+            {
+              "name": "Gross margin",
+              "expression": [
+                "//IF(",
+                "//    ISSELECTEDMEASURE([P&L Value - DimDate]),",
+                "//    CALCULATE(",
+                "//        [Gross margin],",
+                "//        TREATAS(",
+                "//            { \"DimDate\" },",
+                "//            'InternalDateSelection'[InternalDateSelection]",
+                "//        )",
+                "//    ),",
+                "//    IF(",
+                "//        ISSELECTEDMEASURE([P&L Value - DimDate2]),",
+                "//        CALCULATE(",
+                "//            [Gross margin],",
+                "//            TREATAS(",
+                "//                { \"DimDate2\" },",
+                "//                'InternalDateSelection'[InternalDateSelection]",
+                "//            )",
+                "//        ),",
+                "//        [Gross margin]",
+                "//    )",
+                "//)",
+                "VAR Revenue = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Revenue\" ",
+                "    )",
+                "VAR ProductCost = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Product cost\" ",
+                "    )",
+                "VAR ServiceAndOtherCosts = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Service and other costs\" ",
+                "    ) ",
+                "RETURN",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        Revenue-ProductCost-ServiceAndOtherCosts,",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            Revenue-ProductCost-ServiceAndOtherCosts,",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        Revenue-ProductCost-ServiceAndOtherCosts",
+                "    )",
+                ")",
+                "",
+                ""
+              ],
+              "ordinal": 5
+            },
+            {
+              "name": "Research and development",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Research and development],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Research and development],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Research and development]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 6
+            },
+            {
+              "name": "Sales and marketing",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Sales and marketing],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Sales and marketing],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Sales and marketing]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 7
+            },
+            {
+              "name": "General and administrative",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [General and administrative],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [General and administrative],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [General and administrative]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 8
+            },
+            {
+              "name": "Restructuring",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Restructuring],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Restructuring],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Restructuring]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 9
+            },
+            {
+              "name": "Operating income",
+              "expression": [
+                "VAR GrossMargin = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Gross margin\" ",
+                "    )  ",
+                "VAR ResearchAndDevelopment = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Research and development\" ",
+                "    )",
+                "VAR SalesAndMarketing = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Sales and marketing\" ",
+                "    )",
+                "VAR GeneralAndAdministrative = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"General and administrative\" ",
+                "    )",
+                "VAR Restructuring = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Restructuring\" ",
+                "    )",
+                "",
+                "",
+                "RETURN",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        GrossMargin-ResearchAndDevelopment-SalesAndMarketing-GeneralAndAdministrative-Restructuring,",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            GrossMargin-ResearchAndDevelopment-SalesAndMarketing-GeneralAndAdministrative-Restructuring,",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        GrossMargin-ResearchAndDevelopment-SalesAndMarketing-GeneralAndAdministrative-Restructuring",
+                "    )",
+                ")"
+              ],
+              "ordinal": 10
+            },
+            {
+              "name": "Other Income, net",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Other Income, net],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Other Income, net],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Other Income, net]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 11
+            },
+            {
+              "name": "Income before income taxes",
+              "expression": [
+                "VAR OperatingIncome = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Operating income\" ",
+                "    )  ",
+                "VAR OtherIncomeNet = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Other Income, net\" ",
+                "    )",
+                "    ",
+                "RETURN",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        OperatingIncome+OtherIncomeNet,",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            OperatingIncome+OtherIncomeNet,",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        OperatingIncome+OtherIncomeNet",
+                "    )",
+                ")"
+              ],
+              "ordinal": 12
+            },
+            {
+              "name": "Provision for income taxes",
+              "expression": [
+                "",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        [Provision for income taxes],",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            [Provision for income taxes],",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        [Provision for income taxes]",
+                "    )",
+                ")"
+              ],
+              "ordinal": 13
+            },
+            {
+              "name": "Net income",
+              "expression": [
+                "VAR IncomeBeforeIncomeTaxes = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Income before income taxes\" ",
+                "    )  ",
+                "VAR ProvisionForIncomeTaxes = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'P&L'[Account] = \"Provision for income taxes\" ",
+                "    )",
+                "RETURN",
+                "IF(",
+                "    ISSELECTEDMEASURE([P&L Value - AC]),",
+                "    CALCULATE(",
+                "        IncomeBeforeIncomeTaxes-ProvisionForIncomeTaxes,",
+                "        TREATAS(",
+                "            { \"DimDate\" },",
+                "            'InternalDateSelection'[InternalDateSelection]",
+                "        )",
+                "    ),",
+                "    IF(",
+                "        ISSELECTEDMEASURE([P&L Value - PY]),",
+                "        CALCULATE(",
+                "            IncomeBeforeIncomeTaxes-ProvisionForIncomeTaxes,",
+                "            TREATAS(",
+                "                { \"DimDate2\" },",
+                "                'InternalDateSelection'[InternalDateSelection]",
+                "            )",
+                "        ),",
+                "        IncomeBeforeIncomeTaxes-ProvisionForIncomeTaxes",
+                "    )",
+                ")"
+              ],
+              "ordinal": 14
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "Account",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ebc9fd94-a76d-448f-a4f6-12a33710ddb8",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "isHidden": true,
+            "lineageTag": "ccf369b2-755a-4e51-9cba-04bed88ed8ac",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "P&L Group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "SWITCH('P&L'[Account], \"Quantity\", \"A\", \"B\")",
+            "isDataTypeInferred": true,
+            "lineageTag": "cde8326f-c1d5-435c-a9b7-17d198deaf4a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "382721f9-35b1-4ca1-912b-9b1b0a9032a1",
+        "partitions": [
+          {
+            "name": "Partition",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactAccounts",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "DateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "a1f4235c-9d99-44ed-9558-95444a3705b5",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "967c9adb-121b-41ef-a719-7ab61d2b28a2",
+            "sourceColumn": "ProductRevenue",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ServiceAndOtherRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "13e4729f-8aa2-49dd-8114-0e9ae6d1fd08",
+            "sourceColumn": "ServiceAndOtherRevenue",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Revenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "e9e9ad94-5cf2-4917-9bdb-182ba68d1166",
+            "sourceColumn": "Revenue",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ProductCost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "a92588c7-37cd-459f-9ed1-81dcea2063ab",
+            "sourceColumn": "ProductCost",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ServiceAndOtherCosts",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "cb8c2eca-23fd-44c2-aaf2-840eb31c85ba",
+            "sourceColumn": "ServiceAndOtherCosts",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "GrossMargin",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "35c3c238-404c-476e-b8c7-330576433a0e",
+            "sourceColumn": "GrossMargin",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ResearchAndDevelopment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "b3c5d57f-70ae-4c28-bd12-0f4212c1ed62",
+            "sourceColumn": "ResearchAndDevelopment",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SalesAndMarketing",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "9eec72c9-992b-4808-848f-822ccf18effd",
+            "sourceColumn": "SalesAndMarketing",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "GeneralAndAdministrative",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "36c44cc6-7459-4c00-a6eb-89cd6e0aab09",
+            "sourceColumn": "GeneralAndAdministrative",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Restructuring",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "29e51590-6229-4836-a7a7-52724857934c",
+            "sourceColumn": "Restructuring",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OperatingIncome",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "28a3e716-8670-4af3-ab34-694439c917ee",
+            "sourceColumn": "OperatingIncome",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OtherIncomeNet",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "f58aa6c3-56a4-4646-99f9-2782cadce771",
+            "sourceColumn": "OtherIncomeNet",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "IncomeBeforeIncomeTaxes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "d2f88b6e-e652-49c8-92c7-86ca583f2afe",
+            "sourceColumn": "IncomeBeforeIncomeTaxes",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ProvisionForIncomeTaxes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "ea9ec5e5-d3d9-45e3-b14a-592208238c9c",
+            "sourceColumn": "ProvisionForIncomeTaxes",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "NetIncome",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "a78d2cff-2b09-41de-a547-e779780ed59c",
+            "sourceColumn": "NetIncome",
+            "sourceProviderType": "decimal(38, 8)",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "255963eb-ed69-4900-9aa4-44c6d8e3c946",
+        "partitions": [
+          {
+            "name": "FactAccounts",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_FactOrderLines = Source{[Schema=\"dbo\",Item=\"vwFactAccounts\"]}[Data]",
+                "in",
+                "    dbo_FactOrderLines"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "InternalDateSelection",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "DimDate",
+              "expression": [
+                "CALCULATE (",
+                "    SELECTEDMEASURE(),",
+                "    USERELATIONSHIP ( 'FactAccounts'[DateKey], 'DimDate'[DateKey] ),",
+                "    CROSSFILTER('FactAccounts'[DateKey], 'DimDate2'[DateKey], NONE)",
+                ")"
+              ],
+              "ordinal": 0
+            },
+            {
+              "name": "DimDate2",
+              "expression": [
+                "CALCULATE (",
+                "    SELECTEDMEASURE(),",
+                "    USERELATIONSHIP ( 'FactAccounts'[DateKey], 'DimDate2'[DateKey] ),",
+                "    CROSSFILTER('FactAccounts'[DateKey], 'DimDate'[DateKey], NONE)",
+                ")"
+              ],
+              "ordinal": 1
+            }
+          ],
+          "precedence": 1
+        },
+        "columns": [
+          {
+            "name": "InternalDateSelection",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fa55bfe2-2ffa-40cb-acd7-a262d1c959cf",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "isHidden": true,
+            "lineageTag": "ba783bfa-62a2-4da9-9801-86b45c1b9064",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "76172a27-c194-4d33-9938-195a57f33064",
+        "partitions": [
+          {
+            "name": "Partition",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDate2",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "DateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "aa083a7c-8942-4900-9bac-d4e25aa6d5c0",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "isNullable": false,
+            "lineageTag": "c48f8cd2-fae6-4a30-a612-a3fc065cc2c3",
+            "sourceColumn": "Date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "84b09634-df3e-4219-993f-9f4b05e7feae",
+            "sourceColumn": "DayName",
+            "sourceProviderType": "varchar(10)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "5575f34b-4227-4f41-acc0-237cd3891c9a",
+            "sourceColumn": "DayOfMonth",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DayOfYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "f0fb79d2-88b7-454f-b6c3-0b0238de070d",
+            "sourceColumn": "DayOfYear",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "66d02976-f817-452d-b53e-54c9982f215d",
+            "sourceColumn": "Month",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MonthName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "12eab5e6-c800-48a2-a44a-841e16d6c34d",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "varchar(10)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthOfQuarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "374fdde7-87a1-45e1-b3ce-5652e73f95ba",
+            "sourceColumn": "MonthOfQuarter",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "9a9db481-c7f8-4931-8758-680977761c1f",
+            "sourceColumn": "MonthYear",
+            "sourceProviderType": "int",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "c892374a-a2b6-46c3-baa3-93812ad08261",
+            "sourceColumn": "Quarter",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "QuarterName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "addb90ab-2f83-41c0-be26-661f1a123d06",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "varchar(2)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "4309b999-9592-4a61-9ee4-254b19c8af46",
+            "sourceColumn": "Year",
+            "sourceProviderType": "smallint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "YearName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "898fd663-8266-4ede-8a48-63e6a570fad2",
+            "sourceColumn": "YearName",
+            "sourceProviderType": "varchar(10)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CreateDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "c7f3bb26-2e63-4045-8982-440090ad30f5",
+            "sourceColumn": "CreateDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeDatetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isNullable": false,
+            "lineageTag": "64282195-7ddb-4f72-a2d7-ea816d0cdfa7",
+            "sourceColumn": "ChangeDatetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LoadId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "918b40f0-3fd2-40fa-a9f7-628f27f4d475",
+            "sourceColumn": "LoadId",
+            "sourceProviderType": "int",
+            "summarizeBy": "count"
+          }
+        ],
+        "lineageTag": "3e0c1481-285d-4c11-a583-0f10762ede45",
+        "partitions": [
+          {
+            "name": "DimDate2",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.pbidedicated.windows.net\", \"tpchwarehouse\"),",
+                "    dbo_DimDate = Source{[Schema=\"dbo\",Item=\"vwDimDate2\"]}[Data]",
+                "in",
+                "    dbo_DimDate"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateSelection",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "1261ed9daa7247cab75f2f3f91867463"
+          }
+        ],
+        "columns": [
+          {
+            "name": "DateSelection",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "8c90c3e8-43f3-422d-9ccd-a75d3e6e6bc1",
+            "sourceColumn": "[DateSelection]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "9943ce59-8b2c-408f-a224-11aa1a63a91a",
+            "sourceColumn": "[Ordinal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "54938f82-5a40-407e-a2f5-ac02fa8e1934",
+        "partitions": [
+          {
+            "name": "DateSelection",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "SELECTCOLUMNS(",
+                "    InternalDateSelection,",
+                "    \"DateSelection\", 'InternalDateSelection'[InternalDateSelection],",
+                "    \"Ordinal\", InternalDateSelection[Ordinal]",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "TimeCalculation",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "CP",
+              "expression": [
+                "SELECTEDMEASURE()",
+                ""
+              ],
+              "ordinal": 0
+            },
+            {
+              "name": "YTD",
+              "expression": [
+                "VAR CurrentYear = MAX(DimDate[Year])",
+                "VAR CurrentMonth = MAX(DimDate[MonthYear])",
+                "RETURN",
+                "CALCULATE(",
+                "    SELECTEDMEASURE(),",
+                "    REMOVEFILTERS(DimDate),",
+                "    DimDate[Year] = CurrentYear && DimDate[MonthYear] <= CurrentMonth",
+                ")",
+                ""
+              ],
+              "ordinal": 4
+            },
+            {
+              "name": "PY",
+              "expression": [
+                "VAR CurrentMonth = MAX(DimDate[MonthYear])",
+                "RETURN",
+                "CALCULATE(",
+                "    SELECTEDMEASURE(),",
+                "    REMOVEFILTERS(DimDate),",
+                "    DimDate[MonthYear] < CurrentMonth - 12",
+                ")",
+                ""
+              ],
+              "ordinal": 1
+            },
+            {
+              "name": "LYTD",
+              "expression": [
+                "VAR CurrentYear = MAX(DimDate[Year])",
+                "VAR CurrentMonth = MAX(DimDate[MonthYear])",
+                "RETURN",
+                "CALCULATE(",
+                "    SELECTEDMEASURE(),",
+                "    REMOVEFILTERS(DimDate),",
+                "    DimDate[Year] = CurrentYear - 1 && DimDate[MonthYear] <= CurrentMonth -12",
+                ")"
+              ],
+              "ordinal": 5
+            },
+            {
+              "name": "ΔPY%",
+              "expression": [
+                "VAR DeltaPreviousYear = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"ΔPY\"",
+                "    )",
+                "VAR PY = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"PY\"",
+                "    )",
+                "RETURN ",
+                "    DIVIDE (",
+                "        DeltaPreviousYear,",
+                "        PY,",
+                "        BLANK ()",
+                "    )"
+              ],
+              "formatStringDefinition": {
+                "expression": "\"0.00%\""
+              },
+              "ordinal": 3
+            },
+            {
+              "name": "ΔPY",
+              "expression": [
+                "VAR CurrentPeriod = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"CP\"",
+                "    )",
+                "VAR PY = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"PY\"",
+                "    )",
+                "RETURN ",
+                "    CurrentPeriod - PY"
+              ],
+              "ordinal": 2
+            },
+            {
+              "name": "ΔLYTD",
+              "expression": [
+                "VAR YearToDate = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"YTD\"",
+                "    )",
+                "VAR LastYearToDate = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"LYTD\"",
+                "    )",
+                "RETURN ",
+                "    YearToDate - LastYearToDate"
+              ],
+              "ordinal": 6
+            },
+            {
+              "name": "ΔLYTD%",
+              "expression": [
+                "VAR DeltaLastYearToDate = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"ΔLYTD\"",
+                "    )",
+                "VAR LastYearToDate = ",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        TimeCalculation[Calculations] = \"LYTD\"",
+                "    )",
+                "RETURN ",
+                "    DIVIDE (",
+                "        DeltaLastYearToDate,",
+                "        LastYearToDate,",
+                "        BLANK ()",
+                "    )"
+              ],
+              "formatStringDefinition": {
+                "expression": "\"0.00%\""
+              },
+              "ordinal": 7
+            },
+            {
+              "name": "PY-OLD",
+              "expression": [
+                "CALCULATE ( ",
+                "    SELECTEDMEASURE(), ",
+                "    SAMEPERIODLASTYEAR ( 'DimDate'[Date] ) ",
+                ")"
+              ],
+              "ordinal": 8
+            }
+          ],
+          "precedence": 2
+        },
+        "columns": [
+          {
+            "name": "Calculations",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ea1bef15-f688-4b5f-a0fa-58a5922c841d",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "isHidden": true,
+            "lineageTag": "1d0880b3-3e88-4208-9f50-df53b83a1016",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "767879f6-d4c8-46aa-acd0-11662f385c0e",
+        "partitions": [
+          {
+            "name": "Partition",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "InternalP&LSelection",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Current",
+              "expression": [
+                "SELECTEDMEASURE()",
+                ""
+              ]
+            },
+            {
+              "name": "Revenue",
+              "expression": [
+                "CALCULATE(",
+                "    SELECTEDMEASURE(),",
+                "    'P&L'[Account] = \"Revenue\"",
+                ")"
+              ]
+            }
+          ],
+          "precedence": 3
+        },
+        "columns": [
+          {
+            "name": "Account",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7a9b9ec8-06d6-4559-82b6-f0d9a2109d08",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "isHidden": true,
+            "lineageTag": "14d9a02e-8df7-4702-93cd-e255d579d290",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "3ff8aafc-9c78-4ae7-9660-f22b27ee1dad",
+        "partitions": [
+          {
+            "name": "Partition",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

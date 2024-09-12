@@ -2,7 +2,7 @@
   "version": "4.0",
   "datasetReference": {
     "byPath": {
-      "path": "../Tpch100_LoadTesting.SemanticModel"
+      "path": "../Tpch100_Import.SemanticModel"
     },
     "byConnection": null
   }

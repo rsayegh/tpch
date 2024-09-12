@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Report",
-    "displayName": "Tpch100_LoadTesting"
+    "type": "DataPipeline",
+    "displayName": "pl_process_semantic_model"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "b90de817-c0db-4bbb-a670-835ebab6c16e"
+    "logicalId": "8316508f-887f-48ef-9579-93c75a06e0a1"
   }
 }

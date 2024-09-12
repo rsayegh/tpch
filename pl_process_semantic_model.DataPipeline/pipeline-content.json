@@ -1,0 +1,29 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "process - Tpch100_Import",
+        "type": "PBISemanticModelRefresh",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "method": "POST",
+          "operationType": "SemanticModelRefresh",
+          "groupId": "1e188410-bf9c-4ff5-b5f2-e4f70114b2f6",
+          "datasetId": "70d25448-676f-4228-879d-39e653e684e9",
+          "waitOnCompletion": true,
+          "commitMode": "Transactional"
+        },
+        "externalReferences": {
+          "connection": "7baa4660-b02b-4dcf-bdef-55e77808eb36"
+        }
+      }
+    ]
+  }
+}

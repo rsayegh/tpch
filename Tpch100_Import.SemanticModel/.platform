@@ -1,12 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "nb-load-tpch-old",
-    "description": "New notebook"
+    "type": "SemanticModel",
+    "displayName": "Tpch100_Import"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "c422d0c9-69d4-4403-aa44-3d167835bd96"
+    "logicalId": "3d344ac7-168c-47ff-9c55-31b208d1354d"
   }
 }

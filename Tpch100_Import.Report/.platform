@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Warehouse",
-    "displayName": "tpchwarehouse"
+    "type": "Report",
+    "displayName": "Tpch100_Import"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "211c5119-95cc-49c5-96db-cf223abbcec8"
+    "logicalId": "1d760172-2e68-4e0b-8cf9-653632139efb"
   }
 }
