@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "tpchwarehouse"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "211c5119-95cc-49c5-96db-cf223abbcec8"
+  }
+}

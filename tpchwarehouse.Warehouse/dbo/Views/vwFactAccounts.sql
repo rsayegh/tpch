@@ -1,0 +1,20 @@
+CREATE VIEW dbo.vwFactAccounts
+AS
+SELECT TOP (1000) [DateKey]
+      ,[ProductRevenue]
+      ,[ServiceAndOtherRevenue]
+      ,[Revenue]
+      ,[ProductCost]
+      ,[ServiceAndOtherCosts]
+      ,[GrossMargin]
+      ,[ResearchAndDevelopment]
+      ,[SalesAndMarketing]
+      ,[GeneralAndAdministrative]
+      ,[Restructuring]
+      ,[OperatingIncome]
+      ,[OtherIncomeNet]
+      ,[IncomeBeforeIncomeTaxes]
+      ,[ProvisionForIncomeTaxes]
+      ,[NetIncome]
+  FROM [dbo].[FactAccounts]
+;
