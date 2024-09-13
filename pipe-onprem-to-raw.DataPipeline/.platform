@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pipe-onprem-to-raw"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ae7afff2-ba56-4f56-acc5-9c7e91e07e02"
+  }
+}

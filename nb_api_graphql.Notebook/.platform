@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "SemanticModel",
-    "displayName": "Fabric Capacity Metrics"
+    "type": "Notebook",
+    "displayName": "nb_api_graphql",
+    "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "6f8c8b33-6f97-43d6-a7fd-762de941df72"
+    "logicalId": "36b7ce5c-7d02-41e3-aac4-529be7361768"
   }
 }

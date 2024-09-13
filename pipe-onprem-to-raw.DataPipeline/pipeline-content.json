@@ -1,0 +1,196 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": "SELECT \n\tTABLE_SCHEMA AS SchemaName,\n\tTABLE_NAME AS SourceTableName,\n\t'staging-' + LOWER(TABLE_NAME) AS TargetTableName\nFROM \n\tINFORMATION_SCHEMA.TABLES\nWHERE \n\tTABLE_TYPE = 'BASE TABLE'\n\tAND \n\tTABLE_NAME NOT IN ( 'factsales', 'factsalesnew', 'dimcustomer')",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "SqlServerTable",
+            "typeProperties": {
+              "database": "dwh"
+            },
+            "schema": [],
+            "externalReferences": {
+              "connection": "9ba503ca-c44a-4e72-9165-2a299aa745b3"
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "lk - input list",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "items": {
+            "value": "@activity('lk - input list').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "SqlServerSource",
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "SqlServerTable",
+                    "typeProperties": {
+                      "schema": {
+                        "value": "@item().SchemaName",
+                        "type": "Expression"
+                      },
+                      "table": {
+                        "value": "@item().SourceTableName",
+                        "type": "Expression"
+                      },
+                      "database": "dwh"
+                    },
+                    "schema": [],
+                    "externalReferences": {
+                      "connection": "9ba503ca-c44a-4e72-9165-2a299aa745b3"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "ParquetSink",
+                  "storeSettings": {
+                    "type": "LakehouseWriteSettings"
+                  },
+                  "formatSettings": {
+                    "type": "ParquetWriteSettings",
+                    "enableVertiParquet": true
+                  },
+                  "datasetSettings": {
+                    "type": "Parquet",
+                    "typeProperties": {
+                      "location": {
+                        "type": "LakehouseLocation",
+                        "folderPath": "onprem",
+                        "fileName": {
+                          "value": "@concat(item().TargetTableName, '.parquet')",
+                          "type": "Expression"
+                        }
+                      },
+                      "compressionCodec": "snappy"
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "bd81869b-e98c-4b54-8f7c-082b36297f64",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Files"
+                        },
+                        "annotations": []
+                      },
+                      "name": "raw"
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "copy - onprem to raw",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "iterate - input list",
+        "dependsOn": [
+          {
+            "activity": "lk - input list",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "afc6b750-2a40-4870-8951-f9a1ddec7957",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb - from files to tables",
+        "dependsOn": [
+          {
+            "activity": "iterate - input list",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Office365Outlook",
+        "typeProperties": {
+          "inputs": {
+            "body": {
+              "To": "rsayegh@microsoft.com",
+              "Subject": "Pipeline execution",
+              "Body": "<p>Success</p>",
+              "Sensitivity": "",
+              "Importance": "Normal"
+            },
+            "method": "post",
+            "path": "/v2/Mail"
+          }
+        },
+        "name": "Office 365 Outlook1",
+        "dependsOn": [
+          {
+            "activity": "nb - from files to tables",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "pSourceServer": {
+        "type": "string"
+      }
+    }
+  }
+}
