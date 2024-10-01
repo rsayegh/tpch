@@ -1,0 +1,312 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "date"
+              },
+              "schema": [],
+              "linkedService": {
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "@pipeline().parameters.pSourceLakeId",
+                    "workspaceId": "@pipeline().parameters.pWorkspaceId",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                },
+                "name": "5f07b31e_ad69_40f8_94c0_51369473cc69"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DelimitedTextSink",
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "formatSettings": {
+              "type": "DelimitedTextWriteSettings",
+              "quoteAllText": true,
+              "fileExtension": ".txt"
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "staging",
+                  "fileName": "date.parquet"
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "@pipeline().parameters.pTargetLakeId",
+                    "workspaceId": "@pipeline().parameters.pWorkspaceId",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                },
+                "name": "13c2734c_ed21_40f6_a77e_1117009a05ff"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "lakehouse to lakehouse",
+        "dependsOn": []
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "SqlServerTable",
+            "typeProperties": {
+              "schema": "dbo",
+              "table": "DimCurrency",
+              "database": "dwh"
+            },
+            "schema": [],
+            "externalReferences": {
+              "connection": "9ba503ca-c44a-4e72-9165-2a299aa745b3"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "gateway on prem lookup",
+        "dependsOn": [
+          {
+            "activity": "lakehouse to lakehouse",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": {
+            "value": "@pipeline().parameters.pNotebookId",
+            "type": "Expression"
+          },
+          "workspaceId": {
+            "value": "@pipeline().parameters.pWorkspaceId",
+            "type": "Expression"
+          },
+          "parameters": {
+            "pStartDate": {
+              "value": "2022-01-01",
+              "type": "string"
+            },
+            "pEndDate": {
+              "value": "2022-12-31",
+              "type": "string"
+            },
+            "pLoadId": {
+              "value": "1",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "fabric notebook",
+        "dependsOn": [
+          {
+            "activity": "gateway on prem lookup",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "database": "mcfs",
+          "storedProcedureName": "[dbo].[uspSelectEmissions]"
+        },
+        "externalReferences": {
+          "connection": "3c711d22-9c57-4d07-ab82-8838e3a38bd3"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "synapse sql pool sp",
+        "dependsOn": [
+          {
+            "activity": "fabric notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "AzureSqlSource",
+            "sqlReaderQuery": "SELECT TOP (1000) * FROM [dbo].[test_mirroring_fabric]",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "AzureSqlTable",
+              "typeProperties": {
+                "database": "demo-d365-monitor-db"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "f362d698-6c87-47ff-abbf-a7b00cdb389b"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "test_mirroring_fabric"
+              },
+              "schema": [],
+              "linkedService": {
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "@pipeline().parameters.pTargetLakeId",
+                    "workspaceId": "@pipeline().parameters.pWorkspaceId",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                },
+                "name": "4168c10a_5704_4ad4_8f23_22e09c9d7ee2"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "azure sql to fabric copy",
+        "dependsOn": [
+          {
+            "activity": "synapse sql pool sp",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "77f72b29-2b18-4f17-81b1-bae97df24698",
+            "type": "PipelineReference"
+          },
+          "parameters": {},
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "Invoke pipeline1",
+        "dependsOn": [
+          {
+            "activity": "azure sql to fabric copy",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "pSourceLakeId": {
+        "type": "string",
+        "defaultValue": "52ef2901-d0e7-4006-b0d4-e90269a3d07f"
+      },
+      "pTargetLakeId": {
+        "type": "string",
+        "defaultValue": "388d7a4e-cf34-46ab-b570-75b5b4a1c0e6"
+      },
+      "pWorkspaceId": {
+        "type": "string",
+        "defaultValue": "1de9f7f6-122d-4b31-bc96-f2fbd2bac98c"
+      },
+      "pNotebookId": {
+        "type": "String",
+        "defaultValue": "7290defd-d10f-4a5b-acb7-c5d4faf8bbfd"
+      }
+    }
+  }
+}

@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "DataPipeline",
-    "displayName": "pipe-onprem-to-raw"
+    "type": "Lakehouse",
+    "displayName": "lakehouse02"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "ae7afff2-ba56-4f56-acc5-9c7e91e07e02"
+    "logicalId": "369e36dc-8d39-456a-bcb4-e045914d294a"
   }
 }
