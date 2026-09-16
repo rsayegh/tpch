@@ -1,0 +1,5 @@
+CREATE SCHEMA [Staging]
+    AUTHORIZATION [dbo];
+
+
+GO

@@ -1,0 +1,138 @@
+table DimSupplier
+	lineageTag: 5b27031e-888e-40f2-8b37-03232b78feb4
+
+	column SupplierKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 43bc694c-2b16-4ce3-a3b7-3367655eba65
+		summarizeBy: none
+		sourceColumn: SupplierKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCode
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5a3a287a-eea0-4447-9075-bfc55be9963d
+		summarizeBy: none
+		sourceColumn: SupplierCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierName
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: bb3613ec-5978-439a-960b-69ea61c7312a
+		summarizeBy: none
+		sourceColumn: SupplierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierAddress
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: 2582cae1-ff0f-46ff-90fb-9363c08184eb
+		summarizeBy: none
+		sourceColumn: SupplierAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierPhone
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(20)
+		lineageTag: 0d45d04e-4936-43ef-b6f9-ef22c04ac6d9
+		summarizeBy: none
+		sourceColumn: SupplierPhone
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierBalance
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(15, 2)
+		lineageTag: e79de874-9475-4e69-ac5e-518f61b2b3a8
+		summarizeBy: none
+		sourceColumn: SupplierBalance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SupplierComment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: c4d5f619-0f91-4eb2-af38-4363b2ff7c02
+		summarizeBy: none
+		sourceColumn: SupplierComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierNation
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: a69b7d11-bc0b-4ec7-8916-a1a312f110a5
+		summarizeBy: none
+		sourceColumn: SupplierNation
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierRegion
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: d5bd62c9-eab7-40dd-a92b-2256751b990f
+		summarizeBy: none
+		sourceColumn: SupplierRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreateDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 3ad8ce81-d236-4de2-aa98-489be3e60074
+		summarizeBy: none
+		sourceColumn: CreateDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 0ffdc971-297f-4ddd-8054-688d34ebfb5d
+		summarizeBy: none
+		sourceColumn: ChangeDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0ee2638a-8f2a-42b4-99ee-4b972d8d69f2
+		summarizeBy: none
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSupplier = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.fabric.microsoft.com", "tpchwarehouse"),
+				    dbo_DimSupplier = Source{[Schema="dbo",Item="DimSupplier"]}[Data]
+				in
+				    dbo_DimSupplier
+

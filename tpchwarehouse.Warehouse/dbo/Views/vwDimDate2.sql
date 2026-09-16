@@ -1,0 +1,24 @@
+CREATE VIEW dbo.vwDimDate2
+AS
+SELECT 
+	[DateKey]
+	,[Date]
+	,[DayName]
+	,[DayOfMonth]
+	,[DayOfYear]
+	,[Month]
+	,[MonthName]
+	,[MonthOfQuarter]
+	,[MonthYear]
+	,[Quarter]
+	,[QuarterName]
+	,[Year]
+	,[YearName]
+	,[CreateDatetime]
+	,[ChangeDatetime]
+	,[LoadId]
+FROM 
+	[dbo].[DimDate]
+;
+
+GO

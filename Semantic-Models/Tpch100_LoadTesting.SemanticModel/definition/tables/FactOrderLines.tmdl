@@ -1,0 +1,267 @@
+table FactOrderLines
+	lineageTag: b076be50-5a47-446b-9873-3db022cf6758
+
+	measure 'Count Rows' = CALCULATE(COUNTROWS(FactOrderLines))
+		formatString: 0
+		lineageTag: bb06b483-62f6-4619-9ff3-dc2252e207ce
+
+	column CommitDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ce72192c-289f-4a7f-82f2-bf9216cd2106
+		summarizeBy: count
+		sourceColumn: CommitDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 18bf2894-1cf7-437c-b45d-1fa369a1c37f
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ab559a8a-9828-4d1a-8820-be16d93b4383
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReceiptDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d7908d85-641e-46c6-86db-d60ba575f690
+		summarizeBy: count
+		sourceColumn: ReceiptDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d40bd0cf-1ed0-43a0-b3b3-a3e55ef74653
+		summarizeBy: count
+		sourceColumn: ShipDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SuppliedPartKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 120eaaa9-1cd2-46e5-8d35-c11c0086f59d
+		summarizeBy: none
+		sourceColumn: SuppliedPartKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bbe46cb7-360c-47c2-a6ec-f94d931ed0cd
+		summarizeBy: none
+		sourceColumn: SupplierKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderCode
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 068bdfca-6de4-4c14-95da-633c89f4e630
+		summarizeBy: count
+		sourceColumn: OrderCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineNumber
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 07d2b266-7905-491f-bbc7-23b5617d7acf
+		summarizeBy: sum
+		sourceColumn: LineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: 57e8ed2f-bd53-40e0-baed-b88a3acb831f
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExtendedPrice
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: 53c63c78-79e8-4949-b778-a977c7eaa830
+		summarizeBy: sum
+		sourceColumn: ExtendedPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Discount
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: 1d89212b-be09-4f25-bebe-4f587c4e6dfe
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Tax
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: f08df3da-22f0-4511-8f80-fa35525a88a2
+		summarizeBy: sum
+		sourceColumn: Tax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ReturnFlag
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 621c3cb6-4eda-403f-bf3f-009a9289effa
+		summarizeBy: none
+		sourceColumn: ReturnFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineStatus
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 74efb0de-c2f9-48b8-a6c5-dac03df0a2e9
+		summarizeBy: none
+		sourceColumn: LineStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipInstruct
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 96899631-ffb5-49a5-a675-1857aeccfcd1
+		summarizeBy: none
+		sourceColumn: ShipInstruct
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipMode
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: bf108606-26e3-4af3-ad2a-82f09ffcd4dd
+		summarizeBy: none
+		sourceColumn: ShipMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineItemComment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: 66bad9b1-32cc-475e-927c-30ab8615e2a6
+		summarizeBy: none
+		sourceColumn: LineItemComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderStatus
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 5d11848c-0b10-4421-ad49-eb6b912af5f4
+		summarizeBy: none
+		sourceColumn: OrderStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderTotalPrice
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: 8e0678f1-3c4e-4994-8bc7-196d5046dc2d
+		summarizeBy: sum
+		sourceColumn: OrderTotalPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderPriority
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 11cd5892-92dd-4c60-a124-8416bd8d4da3
+		summarizeBy: none
+		sourceColumn: OrderPriority
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderClerk
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 143ca02f-c087-4f13-92dd-16d5c662f738
+		summarizeBy: none
+		sourceColumn: OrderClerk
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderShipPriority
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 0db2a579-9525-45f6-bf0c-0804f886008f
+		summarizeBy: none
+		sourceColumn: OrderShipPriority
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderComment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: e64b514f-9c22-4100-9241-b48b9aa1f5a7
+		summarizeBy: none
+		sourceColumn: OrderComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d9d48761-091f-4f31-b36d-84c19c464d7b
+		summarizeBy: count
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactOrderLines = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.fabric.microsoft.com", "tpchwarehouse"),
+				    dbo_FactOrderLines = Source{[Schema="dbo",Item="FactOrderLines"]}[Data]
+				in
+				    dbo_FactOrderLines
+
+	annotation PBI_ResultType = Table
+

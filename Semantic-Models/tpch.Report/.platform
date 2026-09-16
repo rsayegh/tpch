@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "tpch"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e4505609-fcd1-b85d-400e-8a0a3b5bbd72"
+  }
+}

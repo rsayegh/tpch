@@ -1,0 +1,136 @@
+table DimCustomer
+	lineageTag: b203d582-d662-4fdd-834b-9402c78aece6
+	sourceLineageTag: [dbo].[DimCustomer]
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 9293223a-f9f8-426b-90f0-5b8b315a02b6
+		sourceLineageTag: CustomerKey
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a59b1d0-c862-44ec-9df6-532b75ff87ac
+		sourceLineageTag: CustomerCode
+		summarizeBy: count
+		sourceColumn: CustomerCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 1855596d-8318-48c6-8e3d-4b902e857492
+		sourceLineageTag: CustomerName
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerAddress
+		dataType: string
+		lineageTag: e119a04b-fd4e-4156-8836-688b1b0be899
+		sourceLineageTag: CustomerAddress
+		summarizeBy: none
+		sourceColumn: CustomerAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerPhone
+		dataType: string
+		lineageTag: 30f4a70f-9655-4328-b35b-6eaabdb4eb4f
+		sourceLineageTag: CustomerPhone
+		summarizeBy: none
+		sourceColumn: CustomerPhone
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerBalance
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 40a0af1a-49e5-4ff5-943d-cb4c9f58c135
+		sourceLineageTag: CustomerBalance
+		summarizeBy: sum
+		sourceColumn: CustomerBalance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column CustomerSegment
+		dataType: string
+		lineageTag: b532b082-6535-47df-ab84-809c648eacfe
+		sourceLineageTag: CustomerSegment
+		summarizeBy: none
+		sourceColumn: CustomerSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerComment
+		dataType: string
+		lineageTag: 7e897692-8de5-4a83-a49c-e8cf8ca18eef
+		sourceLineageTag: CustomerComment
+		summarizeBy: none
+		sourceColumn: CustomerComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerNation
+		dataType: string
+		lineageTag: b7d72982-0ef6-441c-aa85-424d96dc9fdd
+		sourceLineageTag: CustomerNation
+		summarizeBy: none
+		sourceColumn: CustomerNation
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerRegion
+		dataType: string
+		lineageTag: f12ed8e4-d44c-4c2a-b974-78cc7604923e
+		sourceLineageTag: CustomerRegion
+		summarizeBy: none
+		sourceColumn: CustomerRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreateDatetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 84dd2b88-f840-4694-a75c-09f29f4b5a19
+		sourceLineageTag: CreateDatetime
+		summarizeBy: none
+		sourceColumn: CreateDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeDatetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3cc4511f-7ac8-4dbb-b5cf-b608ab6d1ab7
+		sourceLineageTag: ChangeDatetime
+		summarizeBy: none
+		sourceColumn: ChangeDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b4f64c4-a3a7-4844-b820-5c52a5c23507
+		sourceLineageTag: LoadId
+		summarizeBy: count
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCustomer = entity
+		mode: directLake
+		source
+			entityName: DimCustomer
+			schemaName: dbo
+			expressionSource: 'DirectLake - tpchwarehouse'
+

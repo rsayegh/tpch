@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_export_tpch_orders"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "85afc1e8-66d7-b47b-4ba3-3f49f124a3fc"
+  }
+}

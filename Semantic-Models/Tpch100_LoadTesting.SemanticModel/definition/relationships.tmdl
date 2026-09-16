@@ -1,0 +1,16 @@
+relationship 5844821e-94ac-4d46-af96-d9ead48615f0
+	fromColumn: FactOrderLines.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship 6cab63d6-69a3-46c0-aeda-180558f07b8f
+	fromColumn: FactOrderLines.SupplierKey
+	toColumn: DimSupplier.SupplierKey
+
+relationship 82c5d718-42fc-4ff0-bf31-fa7dced9af92
+	fromColumn: FactOrderLines.SuppliedPartKey
+	toColumn: DimSuppliedPart.SuppliedPartKey
+
+relationship 3d6d1905-8ab7-467c-a215-cc09a6e54373
+	fromColumn: FactOrderLines.OrderDateKey
+	toColumn: DimDate.DateKey
+

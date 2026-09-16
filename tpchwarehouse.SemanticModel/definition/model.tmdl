@@ -1,0 +1,15 @@
+model af4da8b8-8e7c-4048-882b-b3cf5ab4299e
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["vwDimDate","vwDimSuppliedPart","vwDimCustomer","vwFactOrderLines","vwDimDate2","vwDimSupplier","vwFactAccounts","DimSuppliedPart","UserAccess","DimCustomer","DimDate","DimSupplier","FactAccounts","FactOrderLines"]
+
+annotation SourceLineageTagType = DatabaseFullyQualifiedName
+

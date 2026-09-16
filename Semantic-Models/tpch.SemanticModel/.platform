@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "tpch"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d5d03680-ff6f-aced-400c-17d6a2a87a37"
+  }
+}

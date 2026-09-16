@@ -1,0 +1,186 @@
+table DimDate
+	lineageTag: 065cefef-8e44-4c67-806c-c54084d4cecd
+
+	column DateKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: dba082c4-1b3c-4ba9-a4b4-47bb9da93af3
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isNullable: false
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: a4a9f578-7c7a-4767-93f0-cd1386886a7c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DayName
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(10)
+		lineageTag: 18b003f4-1e82-405a-be46-0cb72688346d
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 8f2ddaab-fe0d-45bf-af17-8e4a3c4069a8
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfYear
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 915238f3-6549-499b-a0e7-127a33328e45
+		summarizeBy: none
+		sourceColumn: DayOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 1db2f6bf-f345-44f0-a630-e0f03dff360e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(10)
+		lineageTag: cd5ddfaa-9c3c-4f88-8ded-b1ed0c03852c
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfQuarter
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: ca6bf7bf-7937-41c1-8994-f37e2a09a85d
+		summarizeBy: none
+		sourceColumn: MonthOfQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9a3b34f6-893c-4ada-8a3c-e19fce6bd26a
+		summarizeBy: none
+		sourceColumn: MonthYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 730f736d-32bd-4658-9f0f-d364bb4e23ca
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterName
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(2)
+		lineageTag: 27854163-ec57-4451-a36e-f9bc5fdce2c5
+		summarizeBy: none
+		sourceColumn: QuarterName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: a4909d43-0757-4f2d-ad47-1160a3a99410
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearName
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(10)
+		lineageTag: 93648eb5-836d-45c0-901a-860fd3cede47
+		summarizeBy: none
+		sourceColumn: YearName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreateDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: ac05d097-7ed3-48b9-a8ca-86eda65e5945
+		summarizeBy: none
+		sourceColumn: CreateDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 127b12b7-ba18-4f6c-9bbb-cadcb944e18d
+		summarizeBy: none
+		sourceColumn: ChangeDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5bc801d8-5ef9-46d6-8166-b05f07735615
+		summarizeBy: none
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.fabric.microsoft.com", "tpchwarehouse"),
+				    dbo_DimDate = Source{[Schema="dbo",Item="DimDate"]}[Data]
+				in
+				    dbo_DimDate
+

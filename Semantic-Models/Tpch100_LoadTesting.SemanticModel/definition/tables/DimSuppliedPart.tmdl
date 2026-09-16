@@ -1,0 +1,185 @@
+table DimSuppliedPart
+	lineageTag: 45043f8b-d550-44be-acb9-3885b8cad607
+
+	column SuppliedPartKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 15394a92-e98c-494d-a315-790695e2d0d0
+		summarizeBy: none
+		sourceColumn: SuppliedPartKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartCode
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9e7b4a34-4768-41b9-8f25-84cf961de48c
+		summarizeBy: none
+		sourceColumn: PartCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCode
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 998a474a-ab3d-4fb4-8eed-67b7658defe4
+		summarizeBy: none
+		sourceColumn: SupplierCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SuppliedPartQuantity
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9986f4f4-3d2e-463f-9808-25652736b932
+		summarizeBy: none
+		sourceColumn: SuppliedPartQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column SuppliedPartCost
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: 1468e871-859c-41b9-865a-79f3140936fd
+		summarizeBy: none
+		sourceColumn: SuppliedPartCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SuppliedPartComment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: f5306ec9-d636-4124-ac63-35ac686a8507
+		summarizeBy: none
+		sourceColumn: SuppliedPartComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartName
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 93b4881b-d8e6-4e1a-9140-205064454a2d
+		summarizeBy: none
+		sourceColumn: PartName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartManufacturer
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: b7d4c4fa-0e38-4091-a52b-867e3629ac74
+		summarizeBy: none
+		sourceColumn: PartManufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartBrand
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 4c7d953d-dae4-490f-a53d-51b664646e24
+		summarizeBy: none
+		sourceColumn: PartBrand
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartType
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: a22da2a3-20fe-41cd-968d-12b046c64fde
+		summarizeBy: none
+		sourceColumn: PartType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartSize
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0d9c32f1-bfe1-456b-9f92-51aa292d9713
+		summarizeBy: none
+		sourceColumn: PartSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartContainer
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: c00eb586-7e46-4d34-89fb-bbdcd4859b7f
+		summarizeBy: none
+		sourceColumn: PartContainer
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartRetailPrice
+		dataType: double
+		sourceProviderType: decimal(15, 2)
+		lineageTag: e38c4db5-62e3-4b29-8743-0bd0afa2b94f
+		summarizeBy: none
+		sourceColumn: PartRetailPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PartComment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: cb6ec580-a54b-40ff-aa55-2c54853ccc99
+		summarizeBy: none
+		sourceColumn: PartComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreateDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: ea157b78-9672-4af3-ad36-f72edafa375e
+		summarizeBy: none
+		sourceColumn: CreateDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 4108a84c-9579-4e1d-bc14-899973e414a9
+		summarizeBy: none
+		sourceColumn: ChangeDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 30eb0794-bb7a-40a0-ac4b-2994459f9f01
+		summarizeBy: none
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSuppliedPart = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.fabric.microsoft.com", "tpchwarehouse"),
+				    dbo_DimSuppliedPart = Source{[Schema="dbo",Item="DimSuppliedPart"]}[Data]
+				in
+				    dbo_DimSuppliedPart
+

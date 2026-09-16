@@ -1,0 +1,165 @@
+table lineitem
+	lineageTag: 4c8c2026-7515-44e4-a838-2201b1f22958
+
+	column l_orderkey
+		dataType: int64
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: e42fbba6-2027-4551-a529-ee0217eb96d1
+		summarizeBy: sum
+		sourceColumn: l_orderkey
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_partkey
+		dataType: int64
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: f9572d8f-fbab-4feb-9ad5-139773fce741
+		summarizeBy: sum
+		sourceColumn: l_partkey
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_suppkey
+		dataType: int64
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: 0c213c5b-fc31-4621-8513-a9d0f5194c1a
+		summarizeBy: sum
+		sourceColumn: l_suppkey
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_linenumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 6eb671bc-68c2-4ab0-98aa-21f73e772df0
+		summarizeBy: sum
+		sourceColumn: l_linenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_quantity
+		dataType: double
+		lineageTag: 30d6fda1-043a-4250-a5b7-a905fa5c074c
+		summarizeBy: sum
+		sourceColumn: l_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column l_extendedprice
+		dataType: double
+		lineageTag: 3b517569-dc9a-42cb-8746-bfd545003f28
+		summarizeBy: sum
+		sourceColumn: l_extendedprice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column l_discount
+		dataType: double
+		lineageTag: 83dbcaa5-1b4d-4b02-8f21-98b1727635a6
+		summarizeBy: sum
+		sourceColumn: l_discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column l_tax
+		dataType: double
+		lineageTag: 6edc993f-fea7-4a9d-99dd-bd843eeb5ccf
+		summarizeBy: sum
+		sourceColumn: l_tax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column l_returnflag
+		dataType: string
+		lineageTag: 764f6c74-57e5-4fe5-a852-bbab5c0f625e
+		summarizeBy: none
+		sourceColumn: l_returnflag
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_linestatus
+		dataType: string
+		lineageTag: cbe2d92e-80d1-4178-99d1-6852f0a534e5
+		summarizeBy: none
+		sourceColumn: l_linestatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_shipdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d45165c4-24f7-4e67-8cb4-d7d4adaa0334
+		summarizeBy: none
+		sourceColumn: l_shipdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_commitdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9412f558-3f28-4bcd-83a9-f191a3586df4
+		summarizeBy: none
+		sourceColumn: l_commitdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_receiptdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a2be8911-cc1c-4ed1-87c6-5dd7c6c8f302
+		summarizeBy: none
+		sourceColumn: l_receiptdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_shipinstruct
+		dataType: string
+		lineageTag: dc369737-d802-4071-8c9c-b2613b063033
+		summarizeBy: none
+		sourceColumn: l_shipinstruct
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_shipmode
+		dataType: string
+		lineageTag: 7f86e1ab-7944-44da-9ab6-968f87a1496b
+		summarizeBy: none
+		sourceColumn: l_shipmode
+
+		annotation SummarizationSetBy = Automatic
+
+	column l_comment
+		dataType: string
+		lineageTag: 797b406d-cd71-466c-8c6e-db3e7c5e3c5c
+		summarizeBy: none
+		sourceColumn: l_comment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lineitem = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("n4qsebcwyjpu3cibgdx7fzi5gq-cejxenm6oo3uroji5nhihxqnhm.datawarehouse.fabric.microsoft.com", "tpchlake"),
+				    Query = Value.NativeQuery(
+				        Source,
+				        "select * from [tpchlake].[dbo].[lineitem] where l_shipdate between '1998-01-01' and '1998-12-31'"
+				    )
+				in
+				    Query
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

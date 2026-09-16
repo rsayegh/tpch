@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Tpch100_LoadTesting"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f34fa2c8-741d-9eeb-487a-fe535a9bf825"
+  }
+}

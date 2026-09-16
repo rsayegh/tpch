@@ -1,0 +1,148 @@
+table DimCustomer
+	lineageTag: f0c13c70-b9ca-45d1-b04e-196965224b16
+
+	column CustomerKey
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3c583883-c784-49bd-b56b-8be82c58bb4b
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCode
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7643b886-d65e-4e15-bf4b-788a81d27ae4
+		summarizeBy: none
+		sourceColumn: CustomerCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: a7d9f0fe-fbaa-4e14-8d96-dde99403681b
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerAddress
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: 6ae80837-72f5-4a24-a3be-ad04690d817e
+		summarizeBy: none
+		sourceColumn: CustomerAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerPhone
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(20)
+		lineageTag: f2b32dcc-344d-48a8-97d9-936cdd92e3df
+		summarizeBy: none
+		sourceColumn: CustomerPhone
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerBalance
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(15, 2)
+		lineageTag: ddfd237f-5e38-4278-8963-c0f4a8360aee
+		summarizeBy: none
+		sourceColumn: CustomerBalance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CustomerSegment
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(50)
+		lineageTag: 5af9ae88-c905-4ea8-8f39-b3d18b672533
+		summarizeBy: none
+		sourceColumn: CustomerSegment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerComment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: b1215910-9538-4872-a1af-a726f99fb7f5
+		summarizeBy: none
+		sourceColumn: CustomerComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerNation
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: f2d06477-bec5-41de-9e86-03eb82962877
+		summarizeBy: none
+		sourceColumn: CustomerNation
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerRegion
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: 4b51bc31-4fef-4454-b0f7-2b6e98b062fb
+		summarizeBy: none
+		sourceColumn: CustomerRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreateDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: c5806cd3-f2db-482b-9262-07d5426461ac
+		summarizeBy: none
+		sourceColumn: CreateDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeDatetime
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 1ec602a5-5416-4f34-a1d3-673a8d8686c5
+		summarizeBy: none
+		sourceColumn: ChangeDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 423677d7-16a7-46f2-9e50-27813a0925f7
+		summarizeBy: none
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCustomer = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("sygian73sanudmdii2klkopbei-6iq6afqldczexhsigkmbeugobi.datawarehouse.fabric.microsoft.com", "tpchwarehouse"),
+				    dbo_DimCustomer = Source{[Schema="dbo",Item="DimCustomer"]}[Data]
+				in
+				    dbo_DimCustomer
+

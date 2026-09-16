@@ -1,0 +1,167 @@
+table DimDate
+	lineageTag: 1daef8e7-30fc-42bd-ade1-456575576050
+	sourceLineageTag: [dbo].[DimDate]
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cecd56d-903e-4a87-8a42-9a993962697d
+		sourceLineageTag: DateKey
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b2450abc-16b0-4c5d-a658-cfc40f8ca7e0
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		dataType: string
+		lineageTag: 253f9bd6-df0f-4857-8921-12f1a6ca64c4
+		sourceLineageTag: DayName
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ff1244e-12c4-4b0c-ba69-d3e173bb290a
+		sourceLineageTag: DayOfMonth
+		summarizeBy: sum
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 442e9f1c-2775-4e5f-b98e-5f33c5e7eb37
+		sourceLineageTag: DayOfYear
+		summarizeBy: sum
+		sourceColumn: DayOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 80f227b6-bd99-4564-a691-622429eae4fc
+		sourceLineageTag: Month
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 96cc0c6e-f314-48fb-9756-16ebd37e741d
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfQuarter
+		dataType: int64
+		formatString: 0
+		lineageTag: b5406c45-a917-4b73-9eda-a7443fb945e9
+		sourceLineageTag: MonthOfQuarter
+		summarizeBy: sum
+		sourceColumn: MonthOfQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 3321dea3-67b5-451e-8663-fd938f1b60e3
+		sourceLineageTag: MonthYear
+		summarizeBy: sum
+		sourceColumn: MonthYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 44164084-9d2a-48c0-9d2e-8fd9cfa5f18c
+		sourceLineageTag: Quarter
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterName
+		dataType: string
+		lineageTag: ab63b837-d651-4305-977a-5731143fbabb
+		sourceLineageTag: QuarterName
+		summarizeBy: none
+		sourceColumn: QuarterName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 32f115da-8969-457e-9015-334cace8f6f9
+		sourceLineageTag: Year
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearName
+		dataType: string
+		lineageTag: cda358de-b4df-451c-b776-d0bbf39464f2
+		sourceLineageTag: YearName
+		summarizeBy: none
+		sourceColumn: YearName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreateDatetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5f5ddba4-a0b7-436d-ae29-96ad17bc5d06
+		sourceLineageTag: CreateDatetime
+		summarizeBy: none
+		sourceColumn: CreateDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangeDatetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 59c1559d-af06-45ca-85f3-5ea42f7eef40
+		sourceLineageTag: ChangeDatetime
+		summarizeBy: none
+		sourceColumn: ChangeDatetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadId
+		dataType: int64
+		formatString: 0
+		lineageTag: 396ec61c-c1fb-44c3-a0e2-04f335373ded
+		sourceLineageTag: LoadId
+		summarizeBy: count
+		sourceColumn: LoadId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = entity
+		mode: directLake
+		source
+			entityName: DimDate
+			schemaName: dbo
+			expressionSource: 'DirectLake - tpchwarehouse'
+
